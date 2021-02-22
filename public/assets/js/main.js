@@ -44,7 +44,7 @@ var vcode = (function(){
 
   //bind events
   $inputs.on('keyup', processInput);
-  
+
   //define methods
   function processInput(e) {
     var x = e.charCode || e.keyCode;
@@ -54,8 +54,8 @@ var vcode = (function(){
         $inputs.eq($inputs.index(this) - 1).focus();
       }
     }
-    
-    if( ignoreChar(e) ) 
+
+    if( ignoreChar(e) )
       return false;
     else if (this.value.length == this.maxLength) {
       $(this).next('input').focus();
@@ -65,10 +65,10 @@ var vcode = (function(){
     var x = e.charCode || e.keyCode;
     if (x == 37 || x == 38 || x == 39 || x == 40 )
       return true;
-    else 
+    else
       return false
   }
-  
+
 })();
 var vcode = (function () {
   //cache dom
@@ -98,7 +98,7 @@ var vcode = (function () {
     else return false;
   }
 })();
-$(document).ready(function () {
+/*$(document).ready(function () {
   var scrollLink = $(".scroll");
 
   // Smooth scrolling
@@ -125,4 +125,4 @@ $(document).ready(function () {
       }
     });
   });
-});
+});*/

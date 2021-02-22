@@ -18,6 +18,7 @@
         <about_section></about_section>
 
         <services_section></services_section>
+        <freelancer_section></freelancer_section>
 
         <most_wanted_section></most_wanted_section>
 
@@ -32,9 +33,10 @@
 
 </template>
 <script>
+
 export default {
     mounted() {
-        console.log('Component mounted.')
+        console.log('Freelancer mounted.')
     }
 }
 </script>

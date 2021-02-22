@@ -10,20 +10,14 @@
 
                         <div class="col-lg most-l">
                             <a href="javascript:;" class="active">الكل</a>
-                            <a href="javascript:;">التصميم الجرافيكي</a>
-                            <a href="javascript:;">الموشن جرافيك</a>
-                            <a href="javascript:;">الترجمة</a>
-                            <a href="javascript:;">التعليق الصوتي</a>
+                            <a href="javascript:;" v-for="(category,index) in Categories">{{ category.name }}</a>
                         </div>
                     </div>
                 </div>
                 <!-- Set up your HTML -->
                 <div class="container">
                     <div class="owl-carousel owl-theme">
-
-                        <div>
-
-                            <div class="card" onclick="location.href='#';">
+                        <div>  <div class="card" onclick="location.href='#';">
                                 <div class="img-o-h">
                                     <div class="order-card-img">
                                         <img class="card-img-top" src="assets/img/m-1.svg" alt="Card image cap">
@@ -47,8 +41,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                        </div> </div>
                         <div>  <div class="card" onclick="location.href='#';">
                             <div class="img-o-h">
                                 <div class="order-card-img">
@@ -210,7 +203,26 @@
 <script>
 export default {
     mounted() {
-        console.log('Component mounted carousel')
+        console.log('most wanted.')
+    },
+    data(){
+        return{
+            Categories:[],
+        }
+    },
+    created() {
+        this.fetchCategories();
+    },
+    methods:{
+        fetchCategories(){
+            axios.get('http://3.124.189.172/api/home/categories')
+                .then(res => {
+                    this.Categories = res.data['Categories'];
+                    console.log(res.data['Categories']);
+                });
+        },
+
     }
+
 }
 </script>

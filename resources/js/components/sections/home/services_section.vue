@@ -6,28 +6,10 @@
         <div class="container">
             <h5 class="text-right"><span class="text-con"> خدماتنا </span><span class="text-c"></span></h5>
             <div class="row">
-                <div class="col-lg-3 login100-pic js-tilt" data-tilt>
+                <div class="col-lg-3 login100-pic js-tilt" data-tilt v-for="(category,index)in Categories">
                     <div class="service" onclick="location.href='#';">
-                        <img src="assets/img/s-1.svg" alt="">
-                        <p>التصميم الجرافيكي</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 login100-pic js-tilt" data-tilt>
-                    <div class="service" onclick="location.href='#';">
-                        <img src="assets/img/s-2.svg" alt="">
-                        <p>الموشن جرافيك</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 login100-pic js-tilt" data-tilt>
-                    <div class="service" onclick="location.href='#';">
-                        <img src="assets/img/s-3.svg" alt="">
-                        <p>التعليق الصوتي</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 login100-pic js-tilt" data-tilt>
-                    <div class="service" onclick="location.href='#';">
-                        <img src="assets/img/s-4.svg" alt="">
-                        <p>الترجمة</p>
+                        <img :src="category.image" alt="" style="width: 80%">
+                        <p>{{category.name}}</p>
                     </div>
                 </div>
             </div>
@@ -37,8 +19,26 @@
 
 <script>
 export default {
+    name: 'Categories',
     mounted() {
-        console.log('Component mounted carousel')
-    }
+        console.log('Component mounted')
+    },
+    data() {
+        return {
+            Categories : [],
+        }
+    },
+    created() {
+        this.fetchCategories();
+    },
+    methods : {
+        fetchCategories(){
+            axios.get('http://3.124.189.172/api/home/categories')
+                .then(res => {
+                    this.Categories = res.data['Categories'];
+                    console.log(this.Categories);
+                });
+        },
+    },
 }
 </script>

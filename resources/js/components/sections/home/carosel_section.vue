@@ -3,21 +3,8 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="container">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="assets/img/1.png">
-                    </div>
-                    <div class="carousel-item"></div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="assets/img/1.png" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="assets/img/1.png" alt="Third slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="assets/img/1.png" alt="Third slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="assets/img/1.png" alt="Third slide">
+                    <div class="carousel-item"  v-for="(Adv,index) in Advs" :class="{'active': index === 0}" >
+                        <img class="d-block w-100" :src="Adv.image" alt="First slide">
                     </div>
                 </div>
             </div>
@@ -30,11 +17,7 @@
                 <span class="sr-only">Next</span>
             </a>
             <ol class="carousel-indicators">
-                <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleControls" data-slide-to="1"></li>
-                <li data-target="#carouselExampleControls" data-slide-to="2"></li>
-                <li data-target="#carouselExampleControls" data-slide-to="3"></li>
-                <li data-target="#carouselExampleControls" data-slide-to="4"></li>
+                <li data-target="#carouselExampleControls" v-for="(Adv,index) in Advs" :class="{'active': index === 0}" :data-slide-to="index"></li>
             </ol>
         </div>
     </div>
@@ -42,21 +25,25 @@
 <script>
 export default {
     mounted() {
-        console.log('Component mounted carousel')
+        console.log('carousel mounted.');
     },
     data() {
         return {
-            Advertisments : [
-            ]
-        }
+                Advs :[],
+            }
         },
     created() {
-        axios.get('http://3.124.189.172/api/home/install')
-        .then(response =>{
-                this.Advertisments = response.data;
+        this.fetchAdvertisment();
+    },
+    methods : {
+        fetchAdvertisment(){
+            axios.get('http://3.124.189.172/api/home/advertisements')
+            .then(res => {
+                this.Advs = res.data['Advertisements'];
+                console.log(res.data['Advertisements'])
+            });
         },
-        )
-    }
+    },
 };
 
 </script>

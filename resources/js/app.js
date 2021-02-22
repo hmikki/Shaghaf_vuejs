@@ -51,6 +51,7 @@ Vue.component('thanks_message', require('./components/modals/thanks_message.vue'
 Vue.component('change_password_2', require('./components/modals/change_password_2.vue').default);
 Vue.component('change_setting_2', require('./components/modals/change_setting_2.vue').default);
 Vue.component('carosel_section', require('./components/sections/home/carosel_section.vue').default);
+Vue.component('freelancer_section', require('./components/sections/home/freelancer_section.vue').default);
 Vue.component('about_section', require('./components/sections/home/about_section.vue').default);
 Vue.component('services_section', require('./components/sections/home/services_section.vue').default);
 Vue.component('most_wanted_section', require('./components/sections/home/most_wanted_section.vue').default);
@@ -69,7 +70,7 @@ Vue.component('portfolio', require('./components/sections/serve_user/portfolio.v
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 const app = new Vue({
-    el: '#app',
-});
+            el: '#app',
+        });
+

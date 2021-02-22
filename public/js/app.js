@@ -3965,38 +3965,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted carousel');
+    console.log('carousel mounted.');
   },
   data: function data() {
     return {
-      Advertisments: []
+      Advs: []
     };
   },
   created: function created() {
-    var _this = this;
+    this.fetchAdvertisment();
+  },
+  methods: {
+    fetchAdvertisment: function fetchAdvertisment() {
+      var _this = this;
 
-    axios.get('http://3.124.189.172/api/home/install').then(function (response) {
-      _this.Advertisments = response.data;
-    });
+      axios.get('http://3.124.189.172/api/home/advertisements').then(function (res) {
+        _this.Advs = res.data['Advertisements'];
+        console.log(res.data['Advertisements']);
+      });
+    }
   }
 });
 
@@ -4324,12 +4313,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted carousel');
+  },
+  data: function data() {
+    return {
+      Categories: [],
+      Freelancers: []
+    };
+  },
+  created: function created() {
+    this.fetchCategories();
+  },
+  methods: {
+    fetchCategories: function fetchCategories() {
+      var _this = this;
+
+      axios.get('http://3.124.189.172/api/home/categories').then(function (res) {
+        _this.Categories = res.data['Categories'];
+        console.log(res.data['Categories']);
+      });
+    },
+    fetchFreelancers: function fetchFreelancers() {}
   }
 });
 
@@ -4675,27 +4681,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Categories',
   mounted: function mounted() {
-    console.log('Component mounted carousel');
+    console.log('Component mounted');
+  },
+  data: function data() {
+    return {
+      Categories: []
+    };
+  },
+  created: function created() {
+    this.fetchCategories();
+  },
+  methods: {
+    fetchCategories: function fetchCategories() {
+      var _this = this;
+
+      axios.get('http://3.124.189.172/api/home/categories').then(function (res) {
+        _this.Categories = res.data['Categories'];
+        console.log(_this.Categories);
+      });
+    },
+    doMath: function doMath(index) {
+      if (index < 4) return index;
+    }
   }
 });
 
@@ -45646,150 +45656,109 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "first-s" }, [
+    _c(
+      "div",
+      {
+        staticClass: "carousel slide",
+        attrs: { id: "carouselExampleControls", "data-ride": "carousel" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c(
+            "div",
+            { staticClass: "carousel-inner" },
+            _vm._l(_vm.Advs, function(Adv, index) {
+              return _c(
+                "div",
+                {
+                  staticClass: "carousel-item",
+                  class: { active: index === 0 }
+                },
+                [
+                  _c("img", {
+                    staticClass: "d-block w-100",
+                    attrs: { src: Adv.image, alt: "First slide" }
+                  })
+                ]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "ol",
+          { staticClass: "carousel-indicators" },
+          _vm._l(_vm.Advs, function(Adv, index) {
+            return _c("li", {
+              class: { active: index === 0 },
+              attrs: {
+                "data-target": "#carouselExampleControls",
+                "data-slide-to": index
+              }
+            })
+          }),
+          0
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "first-s" }, [
-      _c(
-        "div",
-        {
-          staticClass: "carousel slide",
-          attrs: { id: "carouselExampleControls", "data-ride": "carousel" }
-        },
-        [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "carousel-inner" }, [
-              _c("div", { staticClass: "carousel-item active" }, [
-                _c("img", {
-                  staticClass: "d-block w-100",
-                  attrs: { src: "assets/img/1.png" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "carousel-item" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "carousel-item" }, [
-                _c("img", {
-                  staticClass: "d-block w-100",
-                  attrs: { src: "assets/img/1.png", alt: "Second slide" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "carousel-item" }, [
-                _c("img", {
-                  staticClass: "d-block w-100",
-                  attrs: { src: "assets/img/1.png", alt: "Third slide" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "carousel-item" }, [
-                _c("img", {
-                  staticClass: "d-block w-100",
-                  attrs: { src: "assets/img/1.png", alt: "Third slide" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "carousel-item" }, [
-                _c("img", {
-                  staticClass: "d-block w-100",
-                  attrs: { src: "assets/img/1.png", alt: "Third slide" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-prev",
-              attrs: {
-                href: "#carouselExampleControls",
-                role: "button",
-                "data-slide": "prev"
-              }
-            },
-            [
-              _c(
-                "span",
-                {
-                  staticClass: "arow-s-l arow-s",
-                  attrs: { "aria-hidden": "true" }
-                },
-                [_c("i", { staticClass: "fas fa-chevron-left" })]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-next",
-              attrs: {
-                href: "#carouselExampleControls",
-                role: "button",
-                "data-slide": "next"
-              }
-            },
-            [
-              _c(
-                "span",
-                {
-                  staticClass: "arow-s-r arow-s",
-                  attrs: { "aria-hidden": "true" }
-                },
-                [_c("i", { staticClass: "fas fa-chevron-right" })]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-            ]
-          ),
-          _vm._v(" "),
-          _c("ol", { staticClass: "carousel-indicators" }, [
-            _c("li", {
-              staticClass: "active",
-              attrs: {
-                "data-target": "#carouselExampleControls",
-                "data-slide-to": "0"
-              }
-            }),
-            _vm._v(" "),
-            _c("li", {
-              attrs: {
-                "data-target": "#carouselExampleControls",
-                "data-slide-to": "1"
-              }
-            }),
-            _vm._v(" "),
-            _c("li", {
-              attrs: {
-                "data-target": "#carouselExampleControls",
-                "data-slide-to": "2"
-              }
-            }),
-            _vm._v(" "),
-            _c("li", {
-              attrs: {
-                "data-target": "#carouselExampleControls",
-                "data-slide-to": "3"
-              }
-            }),
-            _vm._v(" "),
-            _c("li", {
-              attrs: {
-                "data-target": "#carouselExampleControls",
-                "data-slide-to": "4"
-              }
-            })
-          ])
-        ]
-      )
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev",
+        attrs: {
+          href: "#carouselExampleControls",
+          role: "button",
+          "data-slide": "prev"
+        }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "arow-s-l arow-s", attrs: { "aria-hidden": "true" } },
+          [_c("i", { staticClass: "fas fa-chevron-left" })]
+        ),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next",
+        attrs: {
+          href: "#carouselExampleControls",
+          role: "button",
+          "data-slide": "next"
+        }
+      },
+      [
+        _c(
+          "span",
+          { staticClass: "arow-s-r arow-s", attrs: { "aria-hidden": "true" } },
+          [_c("i", { staticClass: "fas fa-chevron-right" })]
+        ),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -45955,504 +45924,447 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "section",
-      { staticClass: "most-wanted", attrs: { id: "most-wanted" } },
-      [
-        _c("div", { staticClass: "shape" }, [
-          _c("div", { staticClass: "co-p" }, [
-            _c("div", { staticClass: "m-w-top container" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-lg-4" }, [
-                  _c("h5", { staticClass: "text-right" }, [
-                    _c("span", { staticClass: "text-con" }, [
-                      _vm._v(" الاكثر طلبا ")
-                    ]),
-                    _c("span", { staticClass: "text-c-y" })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-lg most-l" }, [
+  return _c(
+    "section",
+    { staticClass: "most-wanted", attrs: { id: "most-wanted" } },
+    [
+      _c("div", { staticClass: "shape" }, [
+        _c("div", { staticClass: "co-p" }, [
+          _c("div", { staticClass: "m-w-top container" }, [
+            _c("div", { staticClass: "row" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-lg most-l" },
+                [
                   _c(
                     "a",
                     { staticClass: "active", attrs: { href: "javascript:;" } },
                     [_vm._v("الكل")]
                   ),
                   _vm._v(" "),
-                  _c("a", { attrs: { href: "javascript:;" } }, [
-                    _vm._v("التصميم الجرافيكي")
+                  _vm._l(_vm.Categories, function(category) {
+                    return _c("a", { attrs: { href: "javascript:;" } }, [
+                      _vm._v(_vm._s(category.name))
+                    ])
+                  })
+                ],
+                2
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4" }, [
+      _c("h5", { staticClass: "text-right" }, [
+        _c("span", { staticClass: "text-con" }, [_vm._v(" الاكثر طلبا ")]),
+        _c("span", { staticClass: "text-c-y" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "owl-carousel owl-theme" }, [
+        _c("div", [
+          _c(
+            "div",
+            { staticClass: "card", attrs: { onclick: "location.href='#';" } },
+            [
+              _c("div", { staticClass: "img-o-h" }, [
+                _c("div", { staticClass: "order-card-img" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "assets/img/m-1.svg", alt: "Card image cap" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", [_vm._v("عبدالله جرغون")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [_vm._v("مصمم جرافيك")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                      _vm._v(" الرياض")
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("a", { attrs: { href: "javascript:;" } }, [
-                    _vm._v("الموشن جرافيك")
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-user" }),
+                      _vm._v(" شخصي")
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("a", { attrs: { href: "javascript:;" } }, [
-                    _vm._v("الترجمة")
-                  ]),
+                  _c("div", { staticClass: "col-lg-2" }),
                   _vm._v(" "),
-                  _c("a", { attrs: { href: "javascript:;" } }, [
-                    _vm._v("التعليق الصوتي")
+                  _c("div", { staticClass: "col-4 star" }, [
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star" })
                   ])
                 ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "owl-carousel owl-theme" }, [
-                _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card",
-                      attrs: { onclick: "location.href='#';" }
-                    },
-                    [
-                      _c("div", { staticClass: "img-o-h" }, [
-                        _c("div", { staticClass: "order-card-img" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: "assets/img/m-1.svg",
-                              alt: "Card image cap"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h4", [_vm._v("عبدالله جرغون")]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v("مصمم جرافيك")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-footer" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-map-marker-alt" }),
-                              _vm._v(" الرياض")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-user" }),
-                              _vm._v(" شخصي")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-2" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-4 star" }, [
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star" })
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
-                ]),
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "div",
+            { staticClass: "card", attrs: { onclick: "location.href='#';" } },
+            [
+              _c("div", { staticClass: "img-o-h" }, [
+                _c("div", { staticClass: "order-card-img" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "assets/img/m-1.svg", alt: "Card image cap" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", [_vm._v("عبدالله جرغون")]),
                 _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card",
-                      attrs: { onclick: "location.href='#';" }
-                    },
-                    [
-                      _c("div", { staticClass: "img-o-h" }, [
-                        _c("div", { staticClass: "order-card-img" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: "assets/img/m-1.svg",
-                              alt: "Card image cap"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h4", [_vm._v("عبدالله جرغون")]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v("مصمم جرافيك")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-footer" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-map-marker-alt" }),
-                              _vm._v(" الرياض")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-user" }),
-                              _vm._v(" شخصي")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-2" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-4 star" }, [
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star" })
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card",
-                      attrs: { onclick: "location.href='#';" }
-                    },
-                    [
-                      _c("div", { staticClass: "img-o-h" }, [
-                        _c("div", { staticClass: "order-card-img" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: "assets/img/m-1.svg",
-                              alt: "Card image cap"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h4", [_vm._v("عبدالله جرغون")]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v("مصمم جرافيك")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-footer" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-map-marker-alt" }),
-                              _vm._v(" الرياض")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-user" }),
-                              _vm._v(" شخصي")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-2" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-4 star" }, [
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star" })
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card",
-                      attrs: { onclick: "location.href='#';" }
-                    },
-                    [
-                      _c("div", { staticClass: "img-o-h" }, [
-                        _c("div", { staticClass: "order-card-img" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: "assets/img/m-1.svg",
-                              alt: "Card image cap"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h4", [_vm._v("عبدالله جرغون")]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v("مصمم جرافيك")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-footer" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-map-marker-alt" }),
-                              _vm._v(" الرياض")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-user" }),
-                              _vm._v(" شخصي")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-2" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-4 star" }, [
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star" })
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card",
-                      attrs: { onclick: "location.href='#';" }
-                    },
-                    [
-                      _c("div", { staticClass: "img-o-h" }, [
-                        _c("div", { staticClass: "order-card-img" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: "assets/img/m-1.svg",
-                              alt: "Card image cap"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h4", [_vm._v("عبدالله جرغون")]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v("مصمم جرافيك")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-footer" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-map-marker-alt" }),
-                              _vm._v(" الرياض")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-user" }),
-                              _vm._v(" شخصي")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-2" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-4 star" }, [
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star" })
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card",
-                      attrs: { onclick: "location.href='#';" }
-                    },
-                    [
-                      _c("div", { staticClass: "img-o-h" }, [
-                        _c("div", { staticClass: "order-card-img" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: "assets/img/m-1.svg",
-                              alt: "Card image cap"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h4", [_vm._v("عبدالله جرغون")]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v("مصمم جرافيك")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-footer" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-map-marker-alt" }),
-                              _vm._v(" الرياض")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-user" }),
-                              _vm._v(" شخصي")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-2" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-4 star" }, [
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star" })
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card",
-                      attrs: { onclick: "location.href='#';" }
-                    },
-                    [
-                      _c("div", { staticClass: "img-o-h" }, [
-                        _c("div", { staticClass: "order-card-img" }, [
-                          _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: "assets/img/m-1.svg",
-                              alt: "Card image cap"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-body" }, [
-                        _c("h4", [_vm._v("عبدالله جرغون")]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [
-                          _vm._v("مصمم جرافيك")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "card-footer" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-map-marker-alt" }),
-                              _vm._v(" الرياض")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-3 p-0" }, [
-                            _c("span", [
-                              _c("i", { staticClass: "fas fa-user" }),
-                              _vm._v(" شخصي")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-2" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-4 star" }, [
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star checked" }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "fa fa-star" })
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
+                _c("p", { staticClass: "card-text" }, [_vm._v("مصمم جرافيك")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                      _vm._v(" الرياض")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-user" }),
+                      _vm._v(" شخصي")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-2" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4 star" }, [
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star" })
+                  ])
                 ])
               ])
-            ])
-          ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "div",
+            { staticClass: "card", attrs: { onclick: "location.href='#';" } },
+            [
+              _c("div", { staticClass: "img-o-h" }, [
+                _c("div", { staticClass: "order-card-img" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "assets/img/m-1.svg", alt: "Card image cap" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", [_vm._v("عبدالله جرغون")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [_vm._v("مصمم جرافيك")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                      _vm._v(" الرياض")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-user" }),
+                      _vm._v(" شخصي")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-2" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4 star" }, [
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star" })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "div",
+            { staticClass: "card", attrs: { onclick: "location.href='#';" } },
+            [
+              _c("div", { staticClass: "img-o-h" }, [
+                _c("div", { staticClass: "order-card-img" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "assets/img/m-1.svg", alt: "Card image cap" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", [_vm._v("عبدالله جرغون")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [_vm._v("مصمم جرافيك")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                      _vm._v(" الرياض")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-user" }),
+                      _vm._v(" شخصي")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-2" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4 star" }, [
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star" })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "div",
+            { staticClass: "card", attrs: { onclick: "location.href='#';" } },
+            [
+              _c("div", { staticClass: "img-o-h" }, [
+                _c("div", { staticClass: "order-card-img" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "assets/img/m-1.svg", alt: "Card image cap" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", [_vm._v("عبدالله جرغون")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [_vm._v("مصمم جرافيك")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                      _vm._v(" الرياض")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-user" }),
+                      _vm._v(" شخصي")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-2" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4 star" }, [
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star" })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "div",
+            { staticClass: "card", attrs: { onclick: "location.href='#';" } },
+            [
+              _c("div", { staticClass: "img-o-h" }, [
+                _c("div", { staticClass: "order-card-img" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "assets/img/m-1.svg", alt: "Card image cap" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", [_vm._v("عبدالله جرغون")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [_vm._v("مصمم جرافيك")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                      _vm._v(" الرياض")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-user" }),
+                      _vm._v(" شخصي")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-2" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4 star" }, [
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star" })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "div",
+            { staticClass: "card", attrs: { onclick: "location.href='#';" } },
+            [
+              _c("div", { staticClass: "img-o-h" }, [
+                _c("div", { staticClass: "order-card-img" }, [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: "assets/img/m-1.svg", alt: "Card image cap" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("h4", [_vm._v("عبدالله جرغون")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [_vm._v("مصمم جرافيك")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                      _vm._v(" الرياض")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-3 p-0" }, [
+                    _c("span", [
+                      _c("i", { staticClass: "fas fa-user" }),
+                      _vm._v(" شخصي")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-2" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4 star" }, [
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star checked" }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "fa fa-star" })
+                  ])
+                ])
+              ])
+            ]
+          )
         ])
-      ]
-    )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -47247,7 +47159,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "section",
+    { staticClass: "our-serve", attrs: { id: "our-serve" } },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.Categories, function(category) {
+            return _c(
+              "div",
+              {
+                staticClass: "col-lg-3 login100-pic js-tilt",
+                attrs: { "data-tilt": "" }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "service",
+                    attrs: { onclick: "location.href='#';" }
+                  },
+                  [
+                    _c("img", {
+                      staticStyle: { width: "80%" },
+                      attrs: { src: category.image, alt: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(category.name))])
+                  ]
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -47255,124 +47209,19 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "section",
-      { staticClass: "our-serve", attrs: { id: "our-serve" } },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "test login100-pic js-tilt",
-            attrs: { "data-tilt": "" }
-          },
-          [_c("img", { attrs: { src: "assets/img/test.svg", alt: "" } })]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "container" }, [
-          _c("h5", { staticClass: "text-right" }, [
-            _c("span", { staticClass: "text-con" }, [_vm._v(" خدماتنا ")]),
-            _c("span", { staticClass: "text-c" })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              {
-                staticClass: "col-lg-3 login100-pic js-tilt",
-                attrs: { "data-tilt": "" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "service",
-                    attrs: { onclick: "location.href='#';" }
-                  },
-                  [
-                    _c("img", {
-                      attrs: { src: "assets/img/s-1.svg", alt: "" }
-                    }),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("التصميم الجرافيكي")])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "col-lg-3 login100-pic js-tilt",
-                attrs: { "data-tilt": "" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "service",
-                    attrs: { onclick: "location.href='#';" }
-                  },
-                  [
-                    _c("img", {
-                      attrs: { src: "assets/img/s-2.svg", alt: "" }
-                    }),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("الموشن جرافيك")])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "col-lg-3 login100-pic js-tilt",
-                attrs: { "data-tilt": "" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "service",
-                    attrs: { onclick: "location.href='#';" }
-                  },
-                  [
-                    _c("img", {
-                      attrs: { src: "assets/img/s-3.svg", alt: "" }
-                    }),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("التعليق الصوتي")])
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "col-lg-3 login100-pic js-tilt",
-                attrs: { "data-tilt": "" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "service",
-                    attrs: { onclick: "location.href='#';" }
-                  },
-                  [
-                    _c("img", {
-                      attrs: { src: "assets/img/s-4.svg", alt: "" }
-                    }),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("الترجمة")])
-                  ]
-                )
-              ]
-            )
-          ])
-        ])
-      ]
+      "div",
+      { staticClass: "test login100-pic js-tilt", attrs: { "data-tilt": "" } },
+      [_c("img", { attrs: { src: "assets/img/test.svg", alt: "" } })]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "text-right" }, [
+      _c("span", { staticClass: "text-con" }, [_vm._v(" خدماتنا ")]),
+      _c("span", { staticClass: "text-c" })
+    ])
   }
 ]
 render._withStripped = true
@@ -63327,14 +63176,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************************!*\
   !*** ./resources/js/components/sections/home/carosel_section.vue ***!
   \*******************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _carosel_section_vue_vue_type_template_id_7ef9f4db___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./carosel_section.vue?vue&type=template&id=7ef9f4db& */ "./resources/js/components/sections/home/carosel_section.vue?vue&type=template&id=7ef9f4db&");
 /* harmony import */ var _carosel_section_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carosel_section.vue?vue&type=script&lang=js& */ "./resources/js/components/sections/home/carosel_section.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _carosel_section_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _carosel_section_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -63364,7 +63214,7 @@ component.options.__file = "resources/js/components/sections/home/carosel_sectio
 /*!********************************************************************************************!*\
   !*** ./resources/js/components/sections/home/carosel_section.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
